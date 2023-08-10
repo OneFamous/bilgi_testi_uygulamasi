@@ -32,4 +32,16 @@ class TestVeri {
   void sonrakiSoru() {
     if (_index < _soruBankasi.length - 1) _index++;
   }
+
+  bool testBittiMi() {
+    if (_index + 1 >= _soruBankasi.length) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  void testiSifirla() {
+    _index = 0;
+  }
 }
