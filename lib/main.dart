@@ -24,16 +24,25 @@ class SoruSayfasi extends StatefulWidget {
 
 class _SoruSayfasiState extends State<SoruSayfasi> {
   List<Widget> secimler = [];
-  List<String> sorular = [
-    "1.Titanic gelmiş geçmiş en büyük gemidir!",
-    "2.Dünyadaki tavuk sayısı insan sayısından fazladır!",
-    "3.Kelebeklerin ömrü bir gündür!",
-    "4.Dünya düzdür!",
-    "5.Kaju fıstığı aslında bir meyvenin sapıdır!",
-    "6.Fatih Sultan Mehmet hiç patates yememiştir!",
-    "7.Fransızlar 80 demek için, 4 - 20 der!",
+
+  List<Soru> soruBankasi = [
+    Soru(
+        soruMetni: '1.Titanic gelmiş geçmiş en büyük gemidir!',
+        soruYaniti: false),
+    Soru(
+        soruMetni: "2.Dünyadaki tavuk sayısı insan sayısından fazladır!",
+        soruYaniti: true),
+    Soru(soruMetni: "3.Kelebeklerin ömrü bir gündür!", soruYaniti: false),
+    Soru(soruMetni: "4.Dünya düzdür!", soruYaniti: false),
+    Soru(
+        soruMetni: "5.Kaju fıstığı aslında bir meyvenin sapıdır!",
+        soruYaniti: true),
+    Soru(
+        soruMetni: "6.Fatih Sultan Mehmet hiç patates yememiştir!",
+        soruYaniti: true),
+    Soru(
+        soruMetni: "7.Fransızlar 80 demek için, 4 - 20 der!", soruYaniti: true),
   ];
-  List<bool> yanitlar = [false, true, false, false, true, true, true, true];
   int index = 0;
 
   @override
@@ -64,7 +73,7 @@ class _SoruSayfasiState extends State<SoruSayfasi> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                sorular[index],
+                soruBankasi[index].soruMetni,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20.0,
@@ -99,9 +108,8 @@ class _SoruSayfasiState extends State<SoruSayfasi> {
                             size: 30.0,
                           ),
                           onPressed: () {
-                            bool dogruYanit = yanitlar[index];
                             setState(() {
-                              if (dogruYanit == false) {
+                              if (soruBankasi[index].soruYaniti == false) {
                                 secimler.add(dogruIcon);
                               } else {
                                 secimler.add(yanlisIcon);
@@ -123,9 +131,8 @@ class _SoruSayfasiState extends State<SoruSayfasi> {
                               )),
                           child: Icon(Icons.thumb_up, size: 30.0),
                           onPressed: () {
-                            bool dogruYanit2 = yanitlar[index];
                             setState(() {
-                              if (dogruYanit2 == true) {
+                              if (soruBankasi[index].soruYaniti == true) {
                                 secimler.add(dogruIcon);
                               } else {
                                 secimler.add(yanlisIcon);
@@ -139,4 +146,10 @@ class _SoruSayfasiState extends State<SoruSayfasi> {
       ],
     );
   }
+}
+
+class Soru {
+  String soruMetni;
+  bool soruYaniti;
+  Soru({required this.soruMetni, required this.soruYaniti});
 }
