@@ -1,6 +1,8 @@
 import 'package:bilgi_testi_uygulamasi/constants.dart';
 import 'package:flutter/material.dart';
 
+import 'test_veri.dart';
+
 void main() => runApp(BilgiTesti());
 
 class BilgiTesti extends StatelessWidget {
@@ -25,24 +27,7 @@ class SoruSayfasi extends StatefulWidget {
 class _SoruSayfasiState extends State<SoruSayfasi> {
   List<Widget> secimler = [];
 
-  List<Soru> soruBankasi = [
-    Soru(
-        soruMetni: '1.Titanic gelmiş geçmiş en büyük gemidir!',
-        soruYaniti: false),
-    Soru(
-        soruMetni: "2.Dünyadaki tavuk sayısı insan sayısından fazladır!",
-        soruYaniti: true),
-    Soru(soruMetni: "3.Kelebeklerin ömrü bir gündür!", soruYaniti: false),
-    Soru(soruMetni: "4.Dünya düzdür!", soruYaniti: false),
-    Soru(
-        soruMetni: "5.Kaju fıstığı aslında bir meyvenin sapıdır!",
-        soruYaniti: true),
-    Soru(
-        soruMetni: "6.Fatih Sultan Mehmet hiç patates yememiştir!",
-        soruYaniti: true),
-    Soru(
-        soruMetni: "7.Fransızlar 80 demek için, 4 - 20 der!", soruYaniti: true),
-  ];
+  TestVeri test_1 = TestVeri();
   int index = 0;
 
   @override
@@ -73,7 +58,7 @@ class _SoruSayfasiState extends State<SoruSayfasi> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                soruBankasi[index].soruMetni,
+                test_1.soruBankasi[index].soruMetni,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20.0,
@@ -109,7 +94,8 @@ class _SoruSayfasiState extends State<SoruSayfasi> {
                           ),
                           onPressed: () {
                             setState(() {
-                              if (soruBankasi[index].soruYaniti == false) {
+                              if (test_1.soruBankasi[index].soruYaniti ==
+                                  false) {
                                 secimler.add(dogruIcon);
                               } else {
                                 secimler.add(yanlisIcon);
@@ -132,7 +118,8 @@ class _SoruSayfasiState extends State<SoruSayfasi> {
                           child: Icon(Icons.thumb_up, size: 30.0),
                           onPressed: () {
                             setState(() {
-                              if (soruBankasi[index].soruYaniti == true) {
+                              if (test_1.soruBankasi[index].soruYaniti ==
+                                  true) {
                                 secimler.add(dogruIcon);
                               } else {
                                 secimler.add(yanlisIcon);
