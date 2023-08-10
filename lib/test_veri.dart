@@ -1,7 +1,9 @@
 import 'soru.dart';
 
 class TestVeri {
-  List<Soru> soruBankasi = [
+  int _index = 0;
+
+  List<Soru> _soruBankasi = [
     Soru(
         soruMetni: '1.Titanic gelmiş geçmiş en büyük gemidir!',
         soruYaniti: false),
@@ -19,4 +21,15 @@ class TestVeri {
     Soru(
         soruMetni: "7.Fransızlar 80 demek için, 4 - 20 der!", soruYaniti: true),
   ];
+  String getSoruMetni() {
+    return _soruBankasi[_index].soruMetni;
+  }
+
+  bool getSoruYaniti() {
+    return _soruBankasi[_index].soruYaniti;
+  }
+
+  void sonrakiSoru() {
+    if (_index < _soruBankasi.length - 1) _index++;
+  }
 }

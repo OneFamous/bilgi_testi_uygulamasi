@@ -28,7 +28,6 @@ class _SoruSayfasiState extends State<SoruSayfasi> {
   List<Widget> secimler = [];
 
   TestVeri test_1 = TestVeri();
-  int index = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +57,7 @@ class _SoruSayfasiState extends State<SoruSayfasi> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                test_1.soruBankasi[index].soruMetni,
+                test_1.getSoruMetni(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20.0,
@@ -94,14 +93,13 @@ class _SoruSayfasiState extends State<SoruSayfasi> {
                           ),
                           onPressed: () {
                             setState(() {
-                              if (test_1.soruBankasi[index].soruYaniti ==
-                                  false) {
+                              if (test_1.getSoruYaniti() == false) {
                                 secimler.add(dogruIcon);
                               } else {
                                 secimler.add(yanlisIcon);
                               }
 
-                              index++;
+                              test_1.sonrakiSoru();
                             });
                           },
                         ))),
@@ -118,13 +116,12 @@ class _SoruSayfasiState extends State<SoruSayfasi> {
                           child: Icon(Icons.thumb_up, size: 30.0),
                           onPressed: () {
                             setState(() {
-                              if (test_1.soruBankasi[index].soruYaniti ==
-                                  true) {
+                              if (test_1.getSoruYaniti() == true) {
                                 secimler.add(dogruIcon);
                               } else {
                                 secimler.add(yanlisIcon);
                               }
-                              index++;
+                              test_1.sonrakiSoru();
                             });
                           },
                         ))),
